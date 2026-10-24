@@ -1,0 +1,316 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iFix — Ремонт телефонов</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #007bff;
+            --primary-dark: #0056b3;
+            --text-dark: #2c3e50;
+            --text-light: #ffffff;
+            --bg-light: #f8f9fa;
+            --border: #e9ecef;
+            --success: #28a745;
+            --rating-bg: #f0ad4e;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: #fff;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        header {
+            background: var(--text-dark);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-light);
+            text-decoration: none;
+        }
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            margin-left: 30px;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: var(--primary);
+        }
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--text-light);
+            text-align: center;
+            padding: 100px 20px;
+        }
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background: var(--text-light);
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 5px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 2px solid var(--text-light);
+        }
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        .services {
+            padding: 80px 0;
+            background-color: var(--bg-light);
+        }
+        .services h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        .service-card {
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid var(--border);
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        .service-card h3 {
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        .cta-section {
+            background: var(--text-dark);
+            color: var(--text-light);
+            text-align: center;
+            padding: 80px 20px;
+        }
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        .rating-section {
+            background: #fff;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        .rating-number {
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--rating-bg);
+            margin-bottom: 10px;
+        }
+        .reviews {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+        .review-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            width: 250px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .review-card p {
+            font-style: italic;
+            margin-bottom: 10px;
+            color: #555;
+        }
+        .review-card strong {
+            color: var(--text-dark);
+        }
+        footer {
+            background: #343a40;
+            color: var(--text-light);
+            text-align: center;
+            padding: 40px 20px;
+        }
+        .footer-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            margin: 0 15px;
+            transition: color 0.3s;
+        }
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+        .copy-btn {
+            background: var(--success);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 10px;
+            transition: background 0.3s;
+        }
+        .copy-btn:hover {
+            background: #218838;
+        }
+        .telegram-btn {
+            background: #0088cc;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-left: 10px;
+            transition: background 0.3s;
+        }
+        .telegram-btn:hover {
+            background: #006699;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-inner">
+            <a href="#" class="logo">iFix</a>
+            <nav>
+                <a href="#services">Услуги</a>
+                <a href="#contact">Контакты</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>iFix — Ваш телефон снова как новый</h1>
+            <p>Экспресс-замена экранов, аккумуляторов, материнских плат и разъёмов. Оригинальные запчасти и гарантия.</p>
+            <a href="#contact" class="btn">Оставить заявку</a>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <div class="container">
+            <h2>Наши услуги</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Замена экрана</h3>
+                    <p>Оригинальные матрицы для iPhone, Samsung, Xiaomi. Безрамочные технологии.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Замена батареи</h3>
+                    <p>Увеличим время работы в 2 раза. Быстрая замена за 20 минут.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Ремонт материнской платы</h3>
+                    <p>Пайка, замена контроллеров питания, восстановление после воды.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Замена разъёмов</h3>
+                    <p>USB-C, Lightning, разъём наушников. Чистим от коррозии.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="rating-section">
+        <div class="container">
+            <div class="rating-number">4.9</div>
+            <p>Средняя оценка на основе 1248 отзывов</p>
+            <div class="reviews">
+                <div class="review-card">
+                    <p>«Экран поменяли за 15 минут, пока я пил кофе. Работает идеально, олеофобка как с завода.»</p>
+                    <strong>Алексей, iPhone 13</strong>
+                </div>
+                <div class="review-card">
+                    <p>«Батарея вздулась, ребята спасли данные и поставили новый аккум. Телефон живет два дня.»</p>
+                    <strong>Марина, Samsung S22</strong>
+                </div>
+                <div class="review-card">
+                    <p>«Сдавал на чистку после пляжа. Думал, плата умерла. Воскресили за час. Респект.»</p>
+                    <strong>Дмитрий, iPhone 11</strong>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>Готовы починить ваш гаджет?</h2>
+            <p>Напишите нам на почту или свяжитесь в Telegram. Диагностика бесплатно.</p>
+            <div style="margin-top: 30px;">
+                <button class="copy-btn" onclick="copyEmail()">sfzdfc@mail.ru</button>
+                <button class="telegram-btn" onclick="goToTelegram()">Написать в Telegram</button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="#">Политика конфиденциальности</a>
+                <a href="#">Гарантии</a>
+                <a href="#">Вакансии</a>
+            </div>
+            <p style="margin-top: 20px;">© 2024 iFix. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script>
+        function copyEmail() {
+            const email = 'sfzdfc@mail.ru';
+            navigator.clipboard.writeText(email).then(() => {
+                alert('Почта скопирована в буфер обмена!');
+            });
+        }
+        function goToTelegram() {
+            // Замените 'ваш_ник_в_телеграм' на ваш реальный никнейм (без @)
+            window.open('https://t.me/ваш_ник_в_телеграм', '_blank');
+        }
+    </script>
+</body>
+</html>
